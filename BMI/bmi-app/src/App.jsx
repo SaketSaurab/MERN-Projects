@@ -49,6 +49,7 @@ function App() {
               </div>
               <div>
                 <label>Height in CM</label>
+                <br/>
                 <input
                   type="text"
                   placeholder="Enter height in CM"
