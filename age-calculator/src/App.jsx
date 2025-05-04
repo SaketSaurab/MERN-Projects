@@ -7,8 +7,11 @@ function App() {
 
   return (
     <>
-      <div>
-        <h2>Age Calculator</h2>
+      <div className='container'>
+        <div className='main-div'>
+        <h1>Age Calculator</h1>
+        <h3>Age Calculator can calculate the age based on your Date of birth</h3>
+      </div>
       </div>
     </>
   )
