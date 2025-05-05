@@ -1,19 +1,64 @@
-.main-div{
+.main-div {
   width: 50vw;
   height: 60vh;
-  background-color: beige;
+  background-color: rgb(245, 245, 220);
   display: flex;
   align-items: center;
   flex-direction: column;
-
-
+  
+  border-radius: 20px;
 }
 
-.container{
+.container {
   width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
+
+.div2 {
+  display: flex;
+  width: 80%;
+
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+button{
+  width: 100px;
+  height: 30px;
+  padding: 5px;
+  background-color: aquamarine;
+  margin: 0px 15px;
+  border-radius: 20px;
+}
+
+.date-input{
+  width: 250px;
+  height: 20px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+}
+.div-dob{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 20px;
+  align-items: center;
+  padding: 0px 10px 20px 10px;
+  background-color: rgb(235, 235, 210);
+}
+
+.div-output{
+    display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+  align-items: center;
+  padding: 0px 10px 20px 10px;
+  background-color: rgb(235, 235, 210);
+}
+
