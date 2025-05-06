@@ -46,6 +46,9 @@ function App() {
                   setBirthdate('');
                   setAge(0);
                 }}
+
+
+                // hello 
                 >Reset</button>
               </div>
             </div>
