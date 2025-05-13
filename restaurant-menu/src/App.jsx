@@ -1,13 +1,12 @@
-import { useState } from 'react'
-import Restaurant  from './component/basics/Restaurant';
-import './App.css'
+import { useState } from "react";
+import Restaurant from "./component/basics/Restaurant";
+import "./App.css";
 function App() {
-  
   return (
     <>
-    <Restaurant/>
-     </>
-  )
+      <Restaurant />
+    </>
+  );
 }
 
-export default App
+export default App;
