@@ -33,7 +33,7 @@
 .result-div {
   margin: 5px 0px;
   border-radius: 5px;
-  width: 380px;
+  width: 374px;
   border: 2px solid red;
   text-align: center;
 }
@@ -50,4 +50,20 @@ input {
   margin: 5px 0px;
   border-radius: 5px;
   padding: 5px;
+}
+.button-div {
+  width: 380px;
+  /* border: 2px dotted peru; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.monthly-run {
+  width: 360px;
+  border: 2px solid rgb(165, 28, 28);
+}
+button {
+  width: 375px;
+  font-size: large;
+  border-radius: 5px;
 }

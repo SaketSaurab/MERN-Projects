@@ -15,6 +15,37 @@ function App() {
   const [vehicleCost2, setVehicleCost2] = useState("");
   const [fuel2Cost, setFuel2Cost] = useState("");
   const [milage2, setMilage2] = useState("");
+  //monthly run
+  const [monthlyRun, setMonthlyRun] = useState("");
+
+  // output state
+  const [vehicle1MonthlyCost, setVehicle1MonthlyCost] = useState(null);
+  const [vehicle2MonthlyCost, setVehicle2MonthlyCost] = useState(null);
+
+  // output result
+  const [payBackMonths, setPayBackMonths] = useState(null);
+
+  // calculation
+  const calculatePayback = () => {
+    // vehicle 1
+    const v1Cost = Number(vehicleCost1);
+    const f1Cost = Number(fuel1Cost);
+    const m1 = Number(milage1);
+
+    //vehicle 2
+    const v2Cost = Number(vehicleCost2);
+    const f2Cost = Number(fuel2Cost);
+    const m2 = Number(milage2);
+
+    const run = Number(monthlyRun);
+
+    // input validation
+
+    if (!v1Cost || !f1Cost || !m2 || !v2Cost || !f2Cost || !m2 || !run) {
+      alert("Please fill all input fileds");
+      return;
+    }
+  };
   return (
     <>
       <div className="container-div">
@@ -90,9 +121,15 @@ function App() {
                 onChange={(e) => setMilage2(e.target.value)}
               ></input>
             </div>
-          </div>
+          </div>{" "}
+          <input
+            className="monthly-run"
+            placeholder="Monthly Run"
+            value={monthlyRun}
+            onChange={(e) => setMonthlyRun(e.target.value)}
+          ></input>
           <div className="button-div">
-            <button>Calculate</button>
+            <button onClick={calculatePayback}>Calculate</button>
           </div>
           <div className="result-div">Result</div>
         </div>
