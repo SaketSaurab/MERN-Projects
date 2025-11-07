@@ -1,0 +1,98 @@
+.container-div {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f4f6f9;
+}
+.card-div {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  gap: 15px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.397);
+}
+
+.title-div {
+  width: 100%;
+  text-align: center;
+  margin: 10px 0px;
+}
+.input-div {
+  width: 100%;
+  display: flex;
+  gap: 15px;
+}
+
+.result-div {
+  width: 95%;
+  background: #f6f9fa;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  line-height: 1.7;
+}
+.input-div1,
+.input-div2 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+input,
+select {
+  border-radius: 6px;
+  padding: 8px;
+  border: 2px solid #ccc;
+  font-size: 14px;
+  transition: 0.1s;
+}
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+.button-div {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+.btn-reset {
+  flex: 1;
+  background-color: #dc3545;
+  color: white;
+}
+.btn-calculate {
+  flex: 3;
+  background-color: #007bff;
+  color: white;
+}
+
+.monthly-run {
+  width: 95%;
+}
+
+button {
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.1s;
+}
+button:hover {
+  opacity: 0.8;
+}
+.result-year {
+  font-size: larger;
+}
+
+@media (max-width: 600px) {
+  .input-div {
+    flex-direction: column;
+  }
+}
