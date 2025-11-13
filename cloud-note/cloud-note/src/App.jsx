@@ -17,6 +17,11 @@ function App() {
     setTitle("");
     setContent("");
   };
+
+  const deleteNote = (id) => {
+    const updatedNotes = notes.filter((note) => note.id !== id);
+    setNotes(updatedNotes);
+  };
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4">Note App</h1>
@@ -50,9 +55,18 @@ function App() {
             <h2 className="font-semibold text-lg mb-2 truncate ">
               {note.title}
             </h2>
-            <p className="text-sm text-gray-600 overflow-hidden h-35 ">
+            <p className="text-sm text-gray-600 overflow-hidden h-25 ">
               {note.content}
             </p>
+            <button
+              onClick={() => deleteNote(note.id)}
+              className="bg-red-500 text-sm mt-2 p-1 rounded text-white"
+            >
+              Delete
+            </button>
+            <button className="text-sm bg-green-400 p-1 text-white ml-2 rounded">
+              Edit
+            </button>
           </div>
         ))}
       </div>
