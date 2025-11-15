@@ -112,7 +112,7 @@ function App() {
       </div>{" "}
       {selectedNote && (
         <div className="fixed inset-0 bg-gray-500/30 backdrop-blur flex justify-center items-center ">
-          <div className="bg-white p-6 rounded-lg max-w-[70vw] max-h-[70vh] overflow-y-auto">
+          <div className="bg-white p-6 rounded-lg min-w-96 max-w-[70vw] max-h-[70vh] overflow-y-auto">
             <h2 className="text-xl font-bold mb-2">{selectedNote.title}</h2>
             <p className="text-gray-700 whitespace-pre-wrap ">
               {selectedNote.content}
