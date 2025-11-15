@@ -55,7 +55,7 @@ function App() {
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4 ">Note App</h1>
-      <div className="bg-white p-4 rounded shadow-md">
+      <div className="bg-white p-4 sm:p-6 md:p-8 rounded shadow-md">
         <input
           className="w-full border rounded-md p-2 mb-2 "
           value={title}
@@ -71,22 +71,22 @@ function App() {
         />
         <button
           onClick={addNote}
-          className={` text-white py-2 px-4 rounded  ${editId !== null ? "bg-green-500 hover:bg-green-600" : "bg-blue-500 hover:bg-blue-600"}`}
+          className={` text-white py-2 px-4 w-full sm:w-auto rounded  ${editId !== null ? "bg-green-500 hover:bg-green-600" : "bg-blue-500 hover:bg-blue-600"}`}
         >
           {editId !== null ? "Update Note" : " Add Note"}
         </button>
       </div>
-      <div className="flex flex-wrap gap-4 mt-6 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-6 ">
         {notes.map((note) => (
           <div
             key={note.id}
             onClick={() => setSelectedNote(note)}
-            className="w-48 h-48 bg-white border rounded-xl shadow p-3 hover:shadow-xl transition cursor-pointer"
+            className="w-full min-h-40 sm:min-h-44 md:min-h-48 bg-white border rounded-xl shadow p-3 hover:shadow-xl transition cursor-pointer"
           >
-            <h2 className="font-semibold text-lg mb-2 truncate ">
+            <h2 className="font-semibold text-lg mb-2 line-clamp-2 ">
               {note.title}
             </h2>
-            <p className="text-sm text-gray-600 overflow-hidden h-24 ">
+            <p className="text-sm text-gray-600 line-clamp-3 ">
               {note.content}
             </p>
             <button
@@ -112,7 +112,7 @@ function App() {
       </div>{" "}
       {selectedNote && (
         <div className="fixed inset-0 bg-gray-500/30 backdrop-blur flex justify-center items-center ">
-          <div className="bg-white p-6 rounded-lg min-w-96 max-w-[70vw] max-h-[70vh] overflow-y-auto">
+          <div className="bg-white p-4 sm:p-6 rounded-lg w-[90vw] sm:w-[70vw] md:w-[50vw] max-h-[80vh] overflow-y-auto">
             <h2 className="text-xl font-bold mb-2">{selectedNote.title}</h2>
             <p className="text-gray-700 whitespace-pre-wrap ">
               {selectedNote.content}
