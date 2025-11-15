@@ -47,6 +47,12 @@ function App() {
     setTitle(note.title);
     setContent(note.content);
     setEditId(note.id);
+
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+      });
+    }, 0);
   };
 
   {
