@@ -128,17 +128,25 @@ function App() {
         ))}
       </div>{" "}
       {selectedNote && (
-        <div className="fixed inset-0 bg-gray-500/30 backdrop-blur flex justify-center items-center ">
-          <div className="bg-white p-4 sm:p-6 rounded-lg w-[90vw] sm:w-[70vw] md:w-[50vw] max-h-[80vh] overflow-y-auto">
+        <div
+          className="fixed inset-0 bg-gray-500/30 backdrop-blur flex justify-center items-center "
+          onClick={() => setSelectedNote(null)}
+        >
+          <div
+            className="bg-white p-4 sm:p-6 rounded-lg w-[90vw] sm:w-[70vw] md:w-[50vw] max-h-[80vh] overflow-y-auto "
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          >
             <h2 className="text-xl font-bold mb-2">{selectedNote.title}</h2>
             <p className="text-gray-700 whitespace-pre-wrap ">
               {selectedNote.content}
             </p>
             <button
-              className="mt-4 bg-blue-500 hover:bg-blue-600 rounded text-white px-4 py-2"
+              className="mt-4 bg-red-500 hover:bg-red-600  text-white px-4 py-2 rounded"
               onClick={() => setSelectedNote(null)}
             >
-              Close
+              ✕
             </button>
           </div>
         </div>
