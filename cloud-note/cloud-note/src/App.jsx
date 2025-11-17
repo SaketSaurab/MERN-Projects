@@ -133,21 +133,22 @@ function App() {
           onClick={() => setSelectedNote(null)}
         >
           <div
-            className="bg-white p-4 sm:p-6 rounded-lg w-[90vw] sm:w-[70vw] md:w-[50vw] max-h-[80vh] overflow-y-auto "
+            className="bg-white p-4 sm:p-6 rounded-lg w-[90vw] sm:w-[70vw] md:w-[50vw] max-h-[80vh] overflow-y-auto relative"
             onClick={(e) => {
               e.stopPropagation();
             }}
           >
-            <h2 className="text-xl font-bold mb-2">{selectedNote.title}</h2>
-            <p className="text-gray-700 whitespace-pre-wrap ">
-              {selectedNote.content}
-            </p>
             <button
-              className="mt-4 bg-red-500 hover:bg-red-600  text-white px-4 py-2 rounded"
+              className="absolute top-4 right-4 bg-red-500 hover:bg-red-700  text-white px-4 py-1 rounded "
               onClick={() => setSelectedNote(null)}
             >
               ✕
             </button>
+
+            <h2 className="text-xl font-bold mb-2">{selectedNote.title}</h2>
+            <p className="text-gray-700 whitespace-pre-wrap ">
+              {selectedNote.content}
+            </p>
           </div>
         </div>
       )}
