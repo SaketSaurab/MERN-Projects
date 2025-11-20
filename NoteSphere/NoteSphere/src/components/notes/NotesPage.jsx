@@ -48,8 +48,9 @@ const NotesPage = () => {
     setEditId(note.id);
   };
   return (
-    <div className="p-6">
+    <div className="p-6  ">
       <h1 className="text-2xl font-bold mb-2 rounded">My Notes</h1>
+      {/* inputarea */}
       <input
         className="border p-2 w-full mb-2 rounded"
         type="text"
@@ -69,7 +70,8 @@ const NotesPage = () => {
       >
         {editId ? "Update Note" : "Add Note"}
       </button>
-      <div className="mt-6 grid gap-4">
+      {/* output area */}
+      <div className="mt-6 grid gap-4 grid-cols-[repeat(auto-fill,minmax(320px,4fr))]">
         {notes.map((note) => (
           <div
             className="border p-4 rounded shadow  cursor-pointer flex flex-col h-48"
@@ -81,7 +83,7 @@ const NotesPage = () => {
                 {note.title}
               </h2>
 
-              <h2 className="text-sm text-gray-500 whitespace-nowrap">
+              <h2 className="text-xs text-gray-500 whitespace-nowrap">
                 {note.createdAt}
               </h2>
             </div>{" "}
@@ -110,6 +112,29 @@ const NotesPage = () => {
           </div>
         ))}
       </div>
+      {selectedNote && (
+        <div
+          className="fixed inset-0 bg-black/40 flex justify-center items-center"
+          onClick={() => setSelectedNote(null)}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="bg-white p-6 rounded-lg w-[90%] max-h-[80vh] overflow-scroll max-w-lg relative"
+          >
+            <button
+              onClick={() => setSelectedNote(null)}
+              className="absolute top-2 right-2 cursor-pointer  bg-red-500 text-white  px-3 py-2 rounded"
+            >
+              ✕
+            </button>
+            <h2 className="text-2xl font-bold mb-1">{selectedNote.title}</h2>
+            <p className="text-xs mb-2  text-gray-500">
+              {selectedNote.createdAt}
+            </p>
+            <p className="whitespace-pre-wrap">{selectedNote.content}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
