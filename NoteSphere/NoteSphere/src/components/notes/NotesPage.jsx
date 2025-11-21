@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 
 const NotesPage = () => {
+  // move to trash state
+  const [trash, setTrash] = useState(() => {
+    const savedTrash = localStorage.getItem("trash");
+    return savedTrash ? JSON.parse(savedTrash) : [];
+  });
+
   const [notes, setNotes] = useState(() => {
     const savedNotes = localStorage.getItem("notes");
     return savedNotes ? JSON.parse(savedNotes) : [];
@@ -12,6 +18,7 @@ const NotesPage = () => {
   const [selectedNote, setSelectedNote] = useState(null);
   useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notes));
+    localStorage.setItem("trash", JSON.stringify(trash));
   }, [notes]);
   const addNote = () => {
     if (!title || !content) {
@@ -37,8 +44,10 @@ const NotesPage = () => {
       setContent("");
     }
   };
-
+  // deltet logic
   const deleteNote = (id) => {
+    const noteToDelete = notes.find((note) => note.id === id);
+    setTrash([...trash, noteToDelete]);
     const updatedNotes = notes.filter((note) => note.id !== id);
     setNotes(updatedNotes);
   };
