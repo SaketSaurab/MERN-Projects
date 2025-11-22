@@ -1,3 +1,4 @@
+import { Navigate, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
 const NotesPage = () => {
@@ -56,9 +57,22 @@ const NotesPage = () => {
     setContent(note.content);
     setEditId(note.id);
   };
+  const Navigate = useNavigate();
+  const copyToClipboard = (content) => {
+    navigator.clipboard.writeText(content);
+    alert("Copied to clipboard");
+  };
   return (
     <div className="p-6  ">
-      <h1 className="text-2xl font-bold mb-2 rounded">My Notes</h1>
+      <div>
+        <h1 className="text-2xl font-bold mb-2 rounded">My Notes</h1>
+        <button
+          onClick={() => Navigate("/trash")}
+          className="bg-gray-700 text-white px-4 py-2 mb-4 rounded "
+        >
+          Go to trash
+        </button>
+      </div>
       {/* inputarea */}
       <input
         className="border p-2 w-full mb-2 rounded"
@@ -98,6 +112,16 @@ const NotesPage = () => {
             </div>{" "}
             <p className="mt-4 overflow-hidden line-clamp-3 ">{note.content}</p>
             <div className="mt-auto">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  copyToClipboard(note.content);
+                }}
+                className="bg-gray-700 hover:bg-gray-800 text-white py-1 px-2 rounded mr-2"
+              >
+                Copy
+              </button>
+
               <button
                 className="bg-green-500 hover:bg-green-600 px-2 py-1 text-white rounded mr-2"
                 onClick={(e) => {

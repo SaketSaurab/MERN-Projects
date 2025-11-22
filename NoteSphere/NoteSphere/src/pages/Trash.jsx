@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Trash = () => {
   const [trash, setTrash] = useState([]);
@@ -31,10 +32,17 @@ const Trash = () => {
     setTrash(updatedTrash);
     localStorage.setItem("trash", JSON.stringify(updatedTrash));
   };
+  const Navigate = useNavigate();
 
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4">Trash</h1>
+      <button
+        className="bg-gray-700 px-4 rounded text-white py-2"
+        onClick={() => Navigate("/")}
+      >
+        Go to Notes
+      </button>
 
       {trash.length === 0 ? (
         <p className="text-gray-500">No deleted Notes</p>
