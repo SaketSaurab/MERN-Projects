@@ -8,6 +8,8 @@ const NotesPage = () => {
     return savedTrash ? JSON.parse(savedTrash) : [];
   });
 
+  // Search state
+  const [search, setSearch] = useState("");
   const [notes, setNotes] = useState(() => {
     const savedNotes = localStorage.getItem("notes");
     return savedNotes ? JSON.parse(savedNotes) : [];
@@ -45,7 +47,7 @@ const NotesPage = () => {
       setContent("");
     }
   };
-  // deltet logic
+  // delete logic
   const deleteNote = (id) => {
     const noteToDelete = notes.find((note) => note.id === id);
     setTrash([...trash, noteToDelete]);
@@ -72,6 +74,13 @@ const NotesPage = () => {
         >
           Go to trash
         </button>
+        <input
+          type="text"
+          placeholder="Search notes...."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="border p-2 rounded ml-16"
+        />
       </div>
       {/* inputarea */}
       <input
@@ -95,55 +104,63 @@ const NotesPage = () => {
       </button>
       {/* output area */}
       <div className="mt-6 grid gap-4 grid-cols-[repeat(auto-fill,minmax(320px,4fr))]">
-        {notes.map((note) => (
-          <div
-            className="border p-4 rounded shadow  cursor-pointer flex flex-col h-48"
-            key={note.id}
-            onClick={() => setSelectedNote(note)}
-          >
-            <div className="flex justify-between items-center">
-              <h2 className="text-2xl font-bold truncate w-2/3">
-                {note.title}
-              </h2>
+        {notes
+          .filter(
+            (note) =>
+              note.title.toLowerCase().includes(search.toLowerCase()) ||
+              note.content.toLowerCase().includes(search.toLowerCase()),
+          )
+          .map((note) => (
+            <div
+              className="border p-4 rounded shadow  cursor-pointer flex flex-col h-48"
+              key={note.id}
+              onClick={() => setSelectedNote(note)}
+            >
+              <div className="flex justify-between items-center">
+                <h2 className="text-2xl font-bold truncate w-2/3">
+                  {note.title}
+                </h2>
 
-              <h2 className="text-xs text-gray-500 whitespace-nowrap">
-                {note.createdAt}
-              </h2>
-            </div>{" "}
-            <p className="mt-4 overflow-hidden line-clamp-3 ">{note.content}</p>
-            <div className="mt-auto">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  copyToClipboard(note.content);
-                }}
-                className="bg-gray-700 hover:bg-gray-800 text-white py-1 px-2 rounded mr-2"
-              >
-                Copy
-              </button>
+                <h2 className="text-xs text-gray-500 whitespace-nowrap">
+                  {note.createdAt}
+                </h2>
+              </div>{" "}
+              <p className="mt-4 overflow-hidden line-clamp-3 ">
+                {note.content}
+              </p>
+              <div className="mt-auto">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    copyToClipboard(note.content);
+                  }}
+                  className="bg-gray-700 hover:bg-gray-800 text-white py-1 px-2 rounded mr-2"
+                >
+                  Copy
+                </button>
 
-              <button
-                className="bg-green-500 hover:bg-green-600 px-2 py-1 text-white rounded mr-2"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  startEditing(note);
-                }}
-              >
-                Edit
-              </button>
+                <button
+                  className="bg-green-500 hover:bg-green-600 px-2 py-1 text-white rounded mr-2"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    startEditing(note);
+                  }}
+                >
+                  Edit
+                </button>
 
-              <button
-                className="bg-red-500 px-2 py-1 text-white hover:bg-red-600  rounded"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  deleteNote(note.id);
-                }}
-              >
-                Delete
-              </button>
+                <button
+                  className="bg-red-500 px-2 py-1 text-white hover:bg-red-600  rounded"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    deleteNote(note.id);
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
       {selectedNote && (
         <div
